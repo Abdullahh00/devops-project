@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 doctors = [
-  { 'id': "1",'firstName': "Muhammad Ali", 'lastName': "Kahoot", 'speciality':"DevOps"  },
-  { 'id': "2",'firstName': "Good", 'lastName': "Doctor",'speciality':"Test"  }
+  { 'id': "10",'firstName': "Muhammad Ali", 'lastName': "Kahoot", 'speciality':"DevOps"  },
+  { 'id': "20",'firstName': "Good", 'lastName': "Doctor",'speciality':"Test"  }
 ]
 
 @app.route('/hello')
