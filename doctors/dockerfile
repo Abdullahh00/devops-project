@@ -1,0 +1,18 @@
+# Use the official Python image as the base image
+FROM python:3.8-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install Flask and any other dependencies your app requires
+RUN pip install Flask
+
+# Copy the entire content of the current directory into the container at /app
+COPY . /app
+
+# Expose the port your Flask app will run on (default is 5000)
+EXPOSE 9090
+
+# Define the command to run your Flask application
+CMD ["python", "app.py"]
+
