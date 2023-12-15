@@ -24,7 +24,7 @@ services:
       - app-network
 
   frontend:
-    image:  abdullah4444/frontend_doctors:1.0
+    image:  abdullah4444/frontend_doctors:f01fa2c390bce5840aa1102b1b3efcd396e53b12
     build: ./path_to_frontend_folder
     ports:
       - "3000:3000"
@@ -46,7 +46,7 @@ networks:
       - app-network
 
   frontend:
-    image:  abdullah4444/frontend_doctors:1.0
+    image:  abdullah4444/frontend_doctors:f01fa2c390bce5840aa1102b1b3efcd396e53b12
     build: ./path_to_frontend_folder
     ports:
       - "3000:3000"
