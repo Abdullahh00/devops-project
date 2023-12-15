@@ -1,0 +1,28 @@
+version: '3'
+services:
+  appointments:
+    build: ./path_to_appointments_folder
+    ports:
+      - "7070:7070"
+    networks:
+      - app-network
+
+  doctors:
+    build: ./path_to_doctors_folder
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network
+
+  frontend:
+    build: ./path_to_frontend_folder
+    ports:
+      - "3000:3000"
+    environment:
+      DOCTORS_SERVICE_URL: doctors:9090
+      APPOINTMENTS_SERVICE_URL: appointments:7070
+    networks:
+      - app-network
+
+networks:
+  app-network:
