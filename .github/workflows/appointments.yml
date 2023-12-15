@@ -21,7 +21,7 @@ jobs:
     - name: rep checkout
       uses: actions/checkout@v2
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKENPATH }}
 
     - name: docker buildX
       uses: docker/setup-buildx-action@v3
@@ -41,7 +41,7 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/appointments:${{ github.sha }}
         secrets: |
-          GIT_AUTH_TOKEN=${{ secrets.TOKEN }}
+          GIT_AUTH_TOKEN=${{ secrets.TOKENPATH }}
 
     - name: docker compose update
       if: github.event_name == 'push'
