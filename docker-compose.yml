@@ -1,7 +1,7 @@
 version: '3'
 services:
   appointments:
-    image:  abdullah4444/appointments:1.0
+    image:  abdullah4444/appointments:7f9c2f698b95e8e819c3a8b91e770ea899e75119
     build: ./path_to_appointments_folder
     ports:
       - "7070:7070"
