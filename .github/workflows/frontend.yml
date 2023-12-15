@@ -47,7 +47,7 @@ jobs:
       if: github.event_name == 'push'
       run: |
         cd ../
-        sed -i "s|${{ secrets.DOCKERHUB_USERNAME }}/frontend:.*|${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}|" docker-compose.yml
+        sed -i "s|${{ secrets.DOCKERHUB_USERNAME }}/frontend:.*|${{ secrets.DOCKERHUB_USERNAME }}/frontend_doctors:${{ github.sha }}|" docker-compose.yml
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
         branch_name=${GITHUB_REF##*/}
