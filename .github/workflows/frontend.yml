@@ -55,5 +55,5 @@ jobs:
         git fetch && git checkout ${branch_name}
         git pull
         git add docker-compose.yml
-        git commit -m "update with new tag: frontend"
+        git commit -m "new tag :frontend_doctors"
         git push
