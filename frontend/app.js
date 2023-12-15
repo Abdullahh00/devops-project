@@ -7,7 +7,7 @@ const HOST = '0.0.0.0';
 //axios aaa
 const axios = require('axios');
 
-// App
+// App js
 const app = express();
 app.use(express.static('public'));
 app.get('/', (req, res) => {
