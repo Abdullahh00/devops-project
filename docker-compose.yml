@@ -15,7 +15,7 @@ services:
       - app-network
 
   doctors:
-    image: abdullah4444/doctors:1.0  
+    image: abdullah4444/doctors:14597d5b4863949b2bd9fb92b15dd3f014dce40d
     build: ./path_to_doctors_folder
     ports:
       - "9090:9090"
