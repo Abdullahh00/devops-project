@@ -1,0 +1,48 @@
+# Deployment configuration for Frontend Doctors Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-doctors-service-deployment
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-doctors
+          image: abdullah4444/frontend_doctors:220dec6927a8b28209b3f35d1b2f4f75c3864f62
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "300m"
+              memory: "256Mi"
+          env:
+            - name: DOCTORS_SERVICE_URL
+              value: "doctors-service:9090"
+            - name: APPOINTMENTS_SERVICE_URL
+              value: "apppointments-service:7070"
+
+---
+
+# Service configuration for Frontend Doctors
+apiVersion: v1
+kind: Service
+metadata:
+  name: frotnend-doctors-service
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: frontend
+

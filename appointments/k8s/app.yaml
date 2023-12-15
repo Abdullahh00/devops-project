@@ -1,0 +1,46 @@
+# Deployment Configuration for Appointments Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appointments
+  template:
+    metadata:
+      labels:
+        app: appointments
+    spec:
+      containers:
+        - name: appointments
+          image: abdullah4444/appointments:14bea8ab7608ef05224b999d5b4bb47b526eff48
+          ports:
+            - containerPort: 7070
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "300m"
+          env:
+            - name: DOCTORS_SERVICE_URL
+              value: "doctors-service:9090"
+
+---
+
+# Service Configuration for Appointments
+apiVersion: v1
+kind: Service
+metadata:
+  name: apppointments-service
+spec:
+  ports:
+    - port: 7070
+      targetPort: 7070
+      protocol: TCP
+  selector:
+    app: appointments
+

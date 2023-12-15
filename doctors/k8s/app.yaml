@@ -1,0 +1,43 @@
+# Deployment Configuration for Doctors Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctors-service-deployement
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: doctors
+  template:
+    metadata:
+      labels:
+        app: doctors
+    spec:
+      containers:
+        - name: doctors
+          image: abdullah4444/doctors:a1023c9c6c31dc4273eb65f31c574d4be965b541
+          ports:
+            - containerPort: 9090
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+---
+
+# Service Configuration for Doctors
+apiVersion: v1
+kind: Service
+metadata:
+  name: doctors-service
+spec:
+  ports:
+    - port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: doctors
+
