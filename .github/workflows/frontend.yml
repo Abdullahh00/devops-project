@@ -39,7 +39,7 @@ jobs:
         context: "{{defaultContext}}:frontend"
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend_doctors:${{ github.sha }}
         secrets: |
           GIT_AUTH_TOKEN=${{ secrets.TOKENPATH }}
 
